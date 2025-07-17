@@ -12,9 +12,15 @@ import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   {path:'', redirectTo:'dashboard', pathMatch: 'full'},  
   {path:'dashboard', component:DashboardComponent},  
-  {path:'products', component:ProductsComponent, data:{title: 'Products'}},  
+  {
+    path: 'products',
+    loadChildren:() => import('./products/products.module').then(m => m.ProductsModule)
+  },  
   {path:'statistics', component:StatisticsComponent, data:{title: 'Statistics'}},  
-  {path:'coupens', component:CoupensComponent, data:{title: 'Coupens'}}, 
+  {
+    path: 'coupens',
+    loadChildren:() => import('./coupens/coupens.module').then(m => m.CoupensModule)
+  }, 
   {path:'pages', component:PagesComponent, data:{title: 'Pages'}}, 
   {path:'media', component:MediaComponent, data:{title: 'Media'}},  
   {path:'settings', component:SettingsComponent, data:{title: 'Settings'}}  
